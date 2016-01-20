@@ -1,0 +1,30 @@
+{
+    "name": "poly-action-block",
+    "version": "1.0.0",
+    "authors": [
+        "Reinier Brummelkamp <reinier@urbanautomation.co.za>"
+    ],
+    "description": "An element providing a solution to no problem in particular.",
+    "keywords": [
+        "web-component",
+        "web-components",
+        "polymer",
+        "poly-action-block"
+    ],
+    "main": "poly-action-block.html",
+    "license": "http://polymer.github.io/LICENSE.txt",
+    "homepage": "https://github.com/<USERNAME>/seed-element/",
+    "ignore": [
+        "/.*",
+        "/test/",
+        "/demo/"
+    ],
+    "dependencies": {
+        "polymer": "Polymer/polymer#^1.0.0",
+        "neon-elements": "PolymerElements/neon-elements#^1.0.0"
+    },
+    "devDependencies": {
+        "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+        "web-component-tester": "*"
+    }
+}
