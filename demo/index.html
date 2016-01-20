@@ -20,15 +20,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <p>An example of <code>&lt;poly-action-block&gt;</code>:</p>
 
-    <button>Say Something</button>
-
-    <poly-action-block></poly-action-block>
-
-    <script>
-      document.querySelector('button').addEventListener('click', function() {
-        alert(document.querySelector('poly-action-block').sayHello('Hallo!'));
-      });
-    </script>
+    <poly-action-block data-actions-url="../test_data.json"></poly-action-block>
 
   </body>
 </html>

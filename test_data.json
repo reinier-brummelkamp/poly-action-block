@@ -1,14 +1,13 @@
 {
-    "data": [
+    "actions": [
         {
-            "label": "Hello World",
+            "label": "01 Hello World",
             "img-src": "http://lorempixel.com/64/64/",
             "href": "http://www.google.com"
         },
         {
-            "label": "Good bye World",
-            "img-src": "http://lorempixel.com/64/64/",
-            "href": "http://www.yahoo.com"
+            "label": "02 Good bye World",
+            "img-src": "http://lorempixel.com/64/64/"
         }
     ]
 }
