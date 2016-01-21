@@ -1,10 +1,10 @@
 {
     "name": "poly-action-block",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "authors": [
-        "Reinier Brummelkamp <reinier@urbanautomation.co.za>"
+        "Reinier Brummelkamp <reinier.brummelkamp@gmail.co.za>"
     ],
-    "description": "An element providing a solution to no problem in particular.",
+    "description": "TODO",
     "keywords": [
         "web-component",
         "web-components",
@@ -13,7 +13,7 @@
     ],
     "main": "poly-action-block.html",
     "license": "http://polymer.github.io/LICENSE.txt",
-    "homepage": "https://github.com/<USERNAME>/seed-element/",
+    "homepage": "https://github.com/reinier-brummelkamp/poly-action-block/",
     "ignore": [
         "/.*",
         "/test/",
