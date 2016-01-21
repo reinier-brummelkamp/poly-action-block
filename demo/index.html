@@ -15,12 +15,51 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <title>poly-action-block Demo</title>
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
     <link rel="import" href="../poly-action-block.html">
+    
+    <style>
+        .action-block {
+            background-color: orangered;
+            height: 250px;
+            cursor: pointer;
+        }
+        .action-second-item {
+           background-color: green;
+        }
+    </style>
   </head>
   <body>
 
     <p>An example of <code>&lt;poly-action-block&gt;</code>:</p>
 
-    <poly-action-block data-actions-url="../test_data.json"></poly-action-block>
-
+    <!--<poly-action-block 
+        class="action-block"
+        data-actions-object=
+        '{
+            "actions": [
+                {
+                    "imgSrc": "http://lorempixel.com/64/64/",
+                    "href": "http://www.google.com",
+                    "hrefNewWindow" : true,
+                    "label": "01 First Action"
+                },
+                {
+                    "ironIconName": "icons:polymer",
+                    "label": "02 Second Action",
+                    "actionItemCssClass": "action-second-item",
+                    "eventName": "blah",
+                    "eventData": {
+                        "foo": "bar"
+                    }
+                }
+            ]
+        }'></poly-action-block>-->
+    <poly-action-block data-actions-url="../test_data.json" class="action-block"></poly-action-block>
+    
+    <script>
+      document.querySelector('poly-action-block').addEventListener('blah', function(e) {
+        alert(e.detail.eventData.foo);
+      });
+    </script>
+    
   </body>
 </html>

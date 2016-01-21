@@ -11,10 +11,37 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../iron-ajax/iron-ajax.html">
 
+<link rel="import" href="../iron-flex-layout/classes/iron-flex-layout.html">
+
 <link rel="import" href="../neon-animation/neon-animated-pages.html">
 <link rel="import" href="../neon-animation/neon-animatable.html">
 <link rel="import" href="../neon-animation/neon-animations.html">
 
+<!-- load default iconset -->
+<link rel="import" href="../iron-icons/iron-icons.html">
+
+<!-- load the rest -->
+<link rel="import" href="../iron-icons/av-icons.html">
+<link rel="import" href="../iron-icons/communication-icons.html">
+<link rel="import" href="../iron-icons/device-icons.html">
+<link rel="import" href="../iron-icons/editor-icons.html">
+<link rel="import" href="../iron-icons/hardware-icons.html">
+<link rel="import" href="../iron-icons/image-icons.html">
+<link rel="import" href="../iron-icons/maps-icons.html">
+<link rel="import" href="../iron-icons/notification-icons.html">
+<link rel="import" href="../iron-icons/social-icons.html">
+<link rel="import" href="../iron-icons/places-icons.html">
+
+
+
+
+
+<!--
+NOTES:
+
+Make 'initialDelay' property
+Make 'actionInterval' both global and per slide
+-->
 
 <!--https://www.youtube.com/watch?v=Lwvi1u4XXzc&feature=youtu.be&list=PLOU2XLYxmsII5c3Mgw6fNYCzaWrsM3sMN-->
 <!--https://www.youtube.com/watch?v=fD2As5RmM8Q-->
@@ -38,25 +65,68 @@ Example:
         :host {
             display: block;
             box-sizing: border-box;
-            /*background-color: purple;*/
+            overflow: hidden;
+        }
+        
+        .full-height {
+            height: 100%;
+        }
+        
+        .slide-container {
+            @apply(--layout-vertical);
+            /*@apply(--layout-center);            */
+            /*@apply(--layout-center-justified);*/
+        }
+        
+        .slide-header {
+            background-color: cornflowerblue;
+        }
+        
+        .slide-body-container {
+            @apply(--layout-flex);
+            @apply(--layout-vertical);
+            @apply(--layout-center);
+            @apply(--layout-center-justified);
+            background-color: darkslategrey;
+        }
+        
+        .slide-body-container .slide-body {
+            background-color: deeppink;
+        }
+        
+        .slide-footer {
+            background-color: limegreen;
         }
     </style>
 
     <template>
-        <iron-ajax auto url="[[dataActionsUrl]]" handle-as="json" last-response="{{ajaxResponse}}" on-response="_actionsReceived"></iron-ajax>
-        <neon-animated-pages id="actions" selected="[[_actionIndex]]" entry-animation="slide-from-right-animation" exit-animation="slide-left-animation">
-            <template is="dom-repeat" items="[[ajaxResponse.actions]]">
-                <neon-animatable>
-                    BOO
-                    <template is="dom-if" if="{{item.href}}">
-                        <a href$="{{item.href}}">
-                            <img src$="{{item.img-src}}" /> 
-                            {{item.label}}
-                        </a>    
-                    </template>
-                </neon-animatable>
-            </template>
-        </neon-animated-pages>
+        <div class="full-height">
+            <iron-ajax auto url="{{dataActionsUrl}}" handle-as="json" last-response="{{ajaxResponse}}" on-response="_actionsReceived"></iron-ajax>
+            <neon-animated-pages id="actions" class="full-height" selected="{{_actionIndex}}" entry-animation="slide-from-right-animation"
+            exit-animation="slide-left-animation">
+                <template is="dom-repeat" items="{{dataActionsObject.actions}}">
+                    <neon-animatable class="full-height">
+                        <div class$="full-height slide-container {{item.actionItemCssClass}}" on-click="_actionClicked">
+                            <div class="slide-header">HEADER</div>
+                            <div class="slide-body-container">
+                                <div class="slide-body">
+                                    <template is="dom-if" if="{{item.imgSrc}}">
+                                        <img class$="{{item.imageCssClass}}" src$="{{item.imgSrc}}" />
+                                    </template>
+                                    <template is="dom-if" if="{{item.ironIconName}}">
+                                        <iron-icon class$="{{item.ironIconCssClass}}" icon="{{item.ironIconName}}"></iron-icon>
+                                    </template>
+                                    <template is="dom-if" if="{{item.label}}">
+                                        <span class$="{{item.labelCssClass}}">{{item.label}}</span>
+                                    </template>
+                                </div>
+                            </div>
+                            <div class="slide-footer">FOOTER</div>
+                        </div>
+                    </neon-animatable>
+                </template>
+            </neon-animated-pages>
+        </div>
     </template>
 </dom-module>
 <script>
@@ -71,6 +141,15 @@ Example:
         },
         _actionCount: {
             type: Number,
+            computed: '_computeActionCount(dataActionsObject)'
+        },
+        
+         /**
+         * The name of the icon to use. The name should be of the form:
+         * `iconset_name:icon_name`.
+         */
+        initialDelay:{
+            type: Number,
             value: 0
         },
         dataActionsUrl: {
@@ -78,10 +157,11 @@ Example:
             value: null
         },        
         dataActionsObject: {
-            type: String,
-            value: null
+            type: Object,
+            value: {},
+            observer: '_dataActionsObjectChanged'
         },
-        dataActionsInterval: {
+        dataActionsDuration: {
             type: Number,
             value: 5000
         }
@@ -116,16 +196,59 @@ Example:
 
     // Element Behavior
 
+    _isNumeric: function (n) {
+        return !isNaN(parseFloat(n)) && isFinite(n);
+    },
+
     _actionsReceived: function(e) {
-        this._actionCount = e.detail.response.actions.length;
-        
-        this._showNextAction();
+        this.dataActionsObject = e.detail.response;
     },
 
     _showNextAction: function() {
-        this._actionIndex = this._actionIndex === (this._actionCount - 1) ? 0 : (this._actionIndex + 1);
+        if(this._actionCount == 0)
+            return;
+        
+        if(this.dataActionsDuration)
+            this._actionIndex = this._actionIndex === (this._actionCount - 1) ? 0 : (this._actionIndex + 1);
             
-        this.async(this._showNextAction, this.dataActionsInterval); 
+        var actionDuration = this.dataActionsDuration;
+            
+        var currentAction = this.dataActionsObject.actions[this._actionIndex];
+        
+        if(currentAction && this._isNumeric(currentAction.duration))
+            actionDuration = currentAction.duration;
+        
+        this.async(this._showNextAction, actionDuration); 
+    },
+    
+    _computeActionCount: function(dataActionsObject) {
+        if(dataActionsObject && dataActionsObject.actions)
+            return dataActionsObject.actions.length;
+            
+        return 0;
+    },
+    
+    _dataActionsObjectChanged: function(newValue, oldValue) {
+         this.async(this._showNextAction, this.initialDelay);
+    },
+    
+    _actionClicked: function(e){
+        var model = e.model.item;
+        
+        //Fire event if one was specified
+        if(model.eventName) {
+            this.fire(model.eventName, {eventData: model.eventData});
+        }
+        
+        //Navigate if href was specified
+        if(model.href) {
+            var openWindowMode = '_self';
+            
+            if(model.hrefNewWindow)
+                openWindowMode = '_blank';
+            
+            window.open(model.href, openWindowMode);
+        }
     }
     
   });

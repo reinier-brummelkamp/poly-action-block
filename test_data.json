@@ -1,13 +1,21 @@
 {
     "actions": [
         {
-            "label": "01 Hello World",
-            "img-src": "http://lorempixel.com/64/64/",
-            "href": "http://www.google.com"
+            "imgSrc": "http://lorempixel.com/64/64/",
+            "href": "http://www.google.com",
+            "hrefNewWindow" : true,
+            "label": "01 First Action",
+            "duration" : 1000
         },
         {
-            "label": "02 Good bye World",
-            "img-src": "http://lorempixel.com/64/64/"
+            "ironIconName": "icons:polymer",
+            "label": "02 Second Action",
+            "actionItemCssClass": "action-second-item",
+            "duration" : 3000,
+            "eventName": "blah",
+            "eventData": {
+                "foo": "bar"
+            }
         }
     ]
 }

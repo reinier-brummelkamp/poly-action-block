@@ -1,15 +1,20 @@
 {
     "actions": [
         {
-            "img-src": "http://lorempixel.com/64/64/",
-            "iron-icon-name": "http://lorempixel.com/64/64/",
+            "imgSrc": "http://lorempixel.com/64/64/",
+            "ironIconName": "http://lorempixel.com/64/64/",
             "href": "http://www.yahoo.com",
+            "hrefNewWindow" : false,
             "label": "02 Good bye World",
-            "event-name" : "blah",
-            "event-data" : { "foo" : "bar"},
-            "action-css-class" : "action-class",
-            "image-css-class" : "image-class",
-            "lable-css-class" : "label-class"
+            "eventName" : "blah",
+            "eventData" : { "foo" : "bar"},
+            
+            "duration" : 1000,
+                        
+            "actionItemCssClass" : "action-item",
+            "imageCssClass" : "action-image",
+            "ironIconCssClass" : "action-image",
+            "labelCssClass" : "action-label"
         }
     ]
 }
