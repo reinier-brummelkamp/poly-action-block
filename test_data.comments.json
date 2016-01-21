@@ -1,20 +1,45 @@
 {
     "actions": [
         {
-            "imgSrc": "http://lorempixel.com/64/64/",
-            "ironIconName": "http://lorempixel.com/64/64/",
+            //Action block anchor and event configuration
             "href": "http://www.yahoo.com",
             "hrefNewWindow" : false,
-            "label": "02 Good bye World",
             "eventName" : "blah",
             "eventData" : { "foo" : "bar"},
-            
             "duration" : 1000,
-                        
+            
+            //Action block style
             "actionItemCssClass" : "action-item",
-            "imageCssClass" : "action-image",
+            
+            //Action block slide header configuration
+            "headerImgSrc": "http://lorempixel.com/64/64/",
+            "headerIronIconName": "http://lorempixel.com/64/64/",
+            "headerLabel": "02 Good bye World",
+            
+            //Action block slide header styles
+            "headerImgCssClass" : "action-image",
+            "headerIronIconCssClass" : "action-image",
+            "headerLabelCssClass" : "action-label",
+            
+            //Action block slide body configuration
+            "imgSrc": "http://lorempixel.com/64/64/",
+            "ironIconName": "http://lorempixel.com/64/64/",
+            "label": "02 Good bye World",
+            
+            //Action block slide body styles
+            "imgCssClass" : "action-image",
             "ironIconCssClass" : "action-image",
-            "labelCssClass" : "action-label"
+            "labelCssClass" : "action-label",
+            
+            //Action block slide footer configuration
+            "footerImgSrc": "http://lorempixel.com/64/64/",
+            "footerIronIconName": "http://lorempixel.com/64/64/",
+            "footerLabel": "02 Good bye World",
+            
+            //Action block slide footer styles
+            "footerImgCssClass" : "action-image",
+            "footerIronIconCssClass" : "action-image",
+            "footerLabelCssClass" : "action-label"
         }
     ]
 }

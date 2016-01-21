@@ -1,21 +1,43 @@
 {
     "actions": [
         {
-            "imgSrc": "http://lorempixel.com/64/64/",
-            "href": "http://www.google.com",
-            "hrefNewWindow" : true,
-            "label": "01 First Action",
-            "duration" : 1000
+            "href": "http://www.yahoo.com",
+            "hrefNewWindow": true,
+            "eventName": "chosen",
+            "eventData": {
+                "site": "yahoo"
+            },
+            "duration": 1000,
+            "actionItemCssClass": "yahoo-action-item",
+            "headerImgSrc": "http://www.whmsonic.com/inc/jshare/images/icons/yahoo.png",
+            "headerLabel": "yahoo header",
+            "headerImgCssClass": "yahoo-header-image",
+            "headerLabelCssClass": "yahoo-header-label",
+            "imgSrc": "http://www.whmsonic.com/inc/jshare/images/icons/yahoo.png",
+            "label": "Yahoo!",
+            "imgCssClass": "yahoo-image",
+            "labelCssClass": "yahoo-label",
+            "footerIronIconName": "icons:info-outline",
+            "footerLabel": "yahoo footer",
+            "footerIronIconCssClass": "yahoo-footer-image",
+            "footerLabelCssClass": "yahoo-footer-label"
         },
         {
-            "ironIconName": "icons:polymer",
-            "label": "02 Second Action",
-            "actionItemCssClass": "action-second-item",
-            "duration" : 3000,
-            "eventName": "blah",
+            "href": "http://www.google.com",
+            "hrefNewWindow": true,
+            "eventName": "chosen",
             "eventData": {
-                "foo": "bar"
-            }
+                "site": "google"
+            },
+            "duration": 5000,
+            "actionItemCssClass": "google-action-item",
+            "headerIronIconName": "icons:report",
+            "imgSrc": "http://www.whmsonic.com/inc/jshare/images/icons/google.png",
+            "label": "google!",
+            "imgCssClass": "google-image",
+            "labelCssClass": "google-label",
+            "footerLabel": "google footer",
+            "footerLabelCssClass": "google-footer-label"
         }
     ]
 }

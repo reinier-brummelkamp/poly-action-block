@@ -9,25 +9,74 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
     <title>poly-action-block Demo</title>
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
     <link rel="import" href="../poly-action-block.html">
-    
+
     <style>
         .action-block {
             background-color: orangered;
             height: 250px;
             cursor: pointer;
         }
-        .action-second-item {
-           background-color: green;
+        
+        .yahoo-action-item {
+            background-color: green;
+        }
+        
+        .yahoo-header-image {
+            background-color: teal;
+        }
+        
+        .yahoo-header-label {
+            background-color: midnightblue;
+        }
+        
+        .yahoo-image {
+            background-color: darkslategray;
+        }
+        
+        .yahoo-label {
+            background-color: darkslateblue;
+        }
+        
+        .yahoo-footer-image {
+            background-color: chartreuse;
+        }
+        
+        .yahoo-footer-label {
+            background-color: darkred;
+        }
+        
+        .google-action-item {
+            background-color: olive;
+        }
+        
+        .google-header-image {
+            background-color: mediumpurple;
+            float: right;
+        }
+        
+        .google-image {
+            background-color: brown;
+        }
+        
+        .google-label {
+            background-color: violet;
+        }
+        
+        .google-footer-label {
+            background-color: tomato;
+            float: right;
         }
     </style>
-  </head>
-  <body>
+</head>
+
+<body>
 
     <p>An example of <code>&lt;poly-action-block&gt;</code>:</p>
 
@@ -54,12 +103,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             ]
         }'></poly-action-block>-->
     <poly-action-block data-actions-url="../test_data.json" class="action-block"></poly-action-block>
-    
+
     <script>
-      document.querySelector('poly-action-block').addEventListener('blah', function(e) {
+        document.querySelector('poly-action-block').addEventListener('blah', function(e) {
         alert(e.detail.eventData.foo);
       });
     </script>
-    
-  </body>
+
+</body>
+
 </html>
