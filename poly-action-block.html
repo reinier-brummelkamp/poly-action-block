@@ -74,12 +74,9 @@ Example:
         
         .slide-container {
             @apply(--layout-vertical);
-            /*@apply(--layout-center);            */
-            /*@apply(--layout-center-justified);*/
         }
         
         .slide-header {
-            background-color: cornflowerblue;
         }
         
         .slide-body-container {
@@ -87,15 +84,12 @@ Example:
             @apply(--layout-vertical);
             @apply(--layout-center);
             @apply(--layout-center-justified);
-            background-color: darkslategrey;
         }
         
         .slide-body-container .slide-body {
-            background-color: deeppink;
         }
         
         .slide-footer {
-            background-color: limegreen;
         }
     </style>
 
@@ -106,40 +100,40 @@ Example:
             exit-animation="slide-left-animation">
                 <template is="dom-repeat" items="{{dataActionsObject.actions}}">
                     <neon-animatable class="full-height">
-                        <div class$="full-height slide-container {{item.actionItemCssClass}}" on-click="_actionClicked">
+                        <div class$="full-height slide-container {{item.actionItemCssClass}}" style$="{{item.actionItemInlineStyle}}" on-click="_actionClicked">
                             <div class="slide-header">
                                 <template is="dom-if" if="{{item.headerImgSrc}}">
-                                    <img class$="{{item.headerImgCssClass}}" src$="{{item.headerImgSrc}}" />
+                                    <img class$="{{item.headerImgCssClass}}" style$="{{item.headerImgInlineStyle}}" src$="{{item.headerImgSrc}}" />
                                 </template>
                                 <template is="dom-if" if="{{item.headerIronIconName}}">
-                                    <iron-icon class$="{{item.headerIronIconCssClass}}" icon="{{item.headerIronIconName}}"></iron-icon>
+                                    <iron-icon class$="{{item.headerIronIconCssClass}}" style$="{{item.headerIronIconInlineStyle}}" icon="{{item.headerIronIconName}}"></iron-icon>
                                 </template>
                                 <template is="dom-if" if="{{item.headerLabel}}">
-                                    <span class$="{{item.headerLabelCssClass}}">{{item.headerLabel}}</span>
+                                    <span class$="{{item.headerLabelCssClass}}" style$="{{item.headerLabelInlineStyle}}">{{item.headerLabel}}</span>
                                 </template>
                             </div>
                             <div class="slide-body-container">
                                 <div class="slide-body">
                                     <template is="dom-if" if="{{item.imgSrc}}">
-                                        <img class$="{{item.imgCssClass}}" src$="{{item.imgSrc}}" />
+                                        <img class$="{{item.imgCssClass}}" style$="{{item.imgInlineStyle}}" src$="{{item.imgSrc}}" />
                                     </template>
                                     <template is="dom-if" if="{{item.ironIconName}}">
-                                        <iron-icon class$="{{item.ironIconCssClass}}" icon="{{item.ironIconName}}"></iron-icon>
+                                        <iron-icon class$="{{item.ironIconCssClass}}" style$="{{item.ironIconInlineStyle}}" icon="{{item.ironIconName}}"></iron-icon>
                                     </template>
                                     <template is="dom-if" if="{{item.label}}">
-                                        <span class$="{{item.labelCssClass}}">{{item.label}}</span>
+                                        <span class$="{{item.labelCssClass}}" style$="{{item.labelInlineStyle}}">{{item.label}}</span>
                                     </template>
                                 </div>
                             </div>
                             <div class="slide-footer">
                                 <template is="dom-if" if="{{item.footerImgSrc}}">
-                                    <img class$="{{item.footerImgCssClass}}" src$="{{item.footerImgSrc}}" />
+                                    <img class$="{{item.footerImgCssClass}}" style$="{{item.footerImgInlineStyle}}" src$="{{item.footerImgSrc}}" />
                                 </template>
                                 <template is="dom-if" if="{{item.footerIronIconName}}">
-                                    <iron-icon class$="{{item.footerIronIconCssClass}}" icon="{{item.footerIronIconName}}"></iron-icon>
+                                    <iron-icon class$="{{item.footerIronIconCssClass}}" style$="{{item.footerIronIconInlineStyle}}" icon="{{item.footerIronIconName}}"></iron-icon>
                                 </template>
                                 <template is="dom-if" if="{{item.footerLabel}}">
-                                    <span class$="{{item.footerLabelCssClass}}">{{item.footerLabel}}</span>
+                                    <span class$="{{item.footerLabelCssClass}}" style$="{{item.footerLabelInlineStyle}}">{{item.footerLabel}}</span>
                                 </template>
                             </div>
                         </div>

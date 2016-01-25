@@ -1,10 +1,10 @@
 {
     "name": "poly-action-block",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "authors": [
-        "Reinier Brummelkamp <reinier.brummelkamp@gmail.co.za>"
+        "Reinier Brummelkamp <reinier.brummelkamp@gmail.com>"
     ],
-    "description": "TODO",
+    "description": "The poly-action-block provides a carousel like button that animates actions that will execute when clicked. Execution can be in the form of navigating or raising a JavaScript event.",
     "keywords": [
         "web-component",
         "web-components",
@@ -14,11 +14,6 @@
     "main": "poly-action-block.html",
     "license": "http://polymer.github.io/LICENSE.txt",
     "homepage": "https://github.com/reinier-brummelkamp/poly-action-block/",
-    "ignore": [
-        "/.*",
-        "/test/",
-        "/demo/"
-    ],
     "dependencies": {
         "polymer": "Polymer/polymer#^1.0.0",
         "neon-elements": "PolymerElements/neon-elements#^1.0.0"
