@@ -7,7 +7,9 @@
             "eventData": {
                 "site": "yahoo"
             },
-            "duration": 1000,
+            "duration": 3000,
+            "entryAnimation": "fade-in-animation",
+            "exitAnimation": "fade-out-animation", 
             "actionItemCssClass": "yahoo-action-item",
             "headerImgSrc": "http://www.whmsonic.com/inc/jshare/images/icons/yahoo.png",
             "headerLabel": "yahoo header",
@@ -29,7 +31,7 @@
             "eventData": {
                 "site": "google"
             },
-            "duration": 5000,
+            "duration": 6000,
             "actionItemCssClass": "google-action-item",
             "headerIronIconName": "icons:report",
             "imgSrc": "http://www.whmsonic.com/inc/jshare/images/icons/google.png",

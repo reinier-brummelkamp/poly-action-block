@@ -96,8 +96,8 @@ Example:
     <template>
         <div class="full-height">
             <iron-ajax auto url="{{dataActionsUrl}}" handle-as="json" last-response="{{ajaxResponse}}" on-response="_actionsReceived"></iron-ajax>
-            <neon-animated-pages id="actions" class="full-height" selected="{{_actionIndex}}" entry-animation="slide-from-right-animation"
-            exit-animation="slide-left-animation">
+            <neon-animated-pages id="actions" class="full-height" selected="{{_actionIndex}}" entry-animation="{{_entryAnimation}}"
+            exit-animation="{{_exitAnimation}}">
                 <template is="dom-repeat" items="{{dataActionsObject.actions}}">
                     <neon-animatable class="full-height">
                         <div class$="full-height slide-container {{item.actionItemCssClass}}" style$="{{item.actionItemInlineStyle}}" on-click="_actionClicked">
@@ -152,6 +152,14 @@ Example:
         _actionIndex: {
             type: Number,
             value: -1
+        },
+        _entryAnimation: {
+            type: String,
+            value: 'slide-from-right-animation'  
+        },        
+        _exitAnimation: {
+            type: String,
+            value: 'slide-left-animation'  
         },
         _actionCount: {
             type: Number,
@@ -221,16 +229,25 @@ Example:
     _showNextAction: function() {
         if(this._actionCount == 0)
             return;
-        
-        if(this.dataActionsDuration)
-            this._actionIndex = this._actionIndex === (this._actionCount - 1) ? 0 : (this._actionIndex + 1);
             
         var actionDuration = this.dataActionsDuration;
-            
-        var currentAction = this.dataActionsObject.actions[this._actionIndex];
+        var currentAction =this.dataActionsObject.actions[this._actionIndex];
+        var newAction = null;
         
-        if(currentAction && this._isNumeric(currentAction.duration))
-            actionDuration = currentAction.duration;
+        if(this.dataActionsDuration) {
+            this._entryAnimation = currentAction && currentAction.entryAnimation ? currentAction.entryAnimation : 'slide-from-right-animation';
+            
+            this._actionIndex = this._actionIndex === (this._actionCount - 1) ? 0 : (this._actionIndex + 1);
+            
+            newAction = this.dataActionsObject.actions[this._actionIndex];
+
+            this._exitAnimation = newAction && newAction.exitAnimation ? newAction.exitAnimation : 'slide-left-animation';
+        }
+                    
+        newAction = this.dataActionsObject.actions[this._actionIndex];
+        
+        if(newAction && this._isNumeric(newAction.duration))
+            actionDuration = newAction.duration;
         
         this.async(this._showNextAction, actionDuration); 
     },

@@ -31,6 +31,8 @@ not want header or footer elements, simply omit all properties related to header
             "eventName" : "click", //JavaScript event name, default null
             "eventData" : { "user" : "me"}, //Associated JavaScript event data, default null 
             "duration" : 1000, //Duration to show this action in milliseconds, default 5000
+            "entryAnimation": "slide-from-right-animation", //polymer animation name to use when showing this action
+            "exitAnimation": "slide-left-animation", //polymer animation name to use when hiding this action 
             
             //Action block style
             "actionItemCssClass" : "action-item", //Css class for the action item, default null
